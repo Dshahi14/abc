@@ -1,19 +1,21 @@
-steps: 
-- task: Npm@1
-  displayName: install
-  inputs:
-    command: 'install'
-    workingDir: 'React-JS-Sample-Code'
+jobs:
+  - job: test
+    steps: 
+      - task: Npm@1
+        displayName: install
+        inputs:
+         command: 'install'
+         workingDir: 'React-JS-Sample-Code'
 
-- task: Npm@1
-  displayName: Build
-  inputs:
-    command: 'custom'
-    workingDir: 'React-JS-Sample-Code'
-    customCommand: 'run build'
+      - task: Npm@1
+        displayName: Build
+        inputs:
+          command: 'custom'
+          workingDir: 'React-JS-Sample-Code'
+          customCommand: 'run build'
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/React-JS-Sample-Code'
-    artifact: 'drop'
-    publishLocation: 'pipeline'
+      - task: PublishPipelineArtifact@1
+        inputs:
+         targetPath: '$(Build.ArtifactStagingDirectory)/React-JS-Sample-Code'
+         artifact: 'drop'
+         publishLocation: 'pipeline'
