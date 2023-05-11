@@ -1,6 +1,4 @@
-jobs:
-  - job: test
-    steps: 
+steps: 
       - task: Npm@1
         displayName: install
         inputs:
